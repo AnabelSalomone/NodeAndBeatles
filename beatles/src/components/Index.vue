@@ -8,7 +8,7 @@
           <div class="card">
             <div class="card-image">
               <img v-bind:src=item.cover>
-              <span class="card-title">{{item.name}}</span>
+              <span class="card-title grey darken-3">{{item.name}}</span>
             </div>
 							
 								<div class="card-content">
