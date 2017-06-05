@@ -1,7 +1,7 @@
 <template>
  <div>
   <h2>Beatles database</h2>
-	<input class="input" type="text" placeholder="Find a post" v-model="search" @keyup="rechercher">
+	<input class="input" type="text" placeholder="Find a song" v-model="search" @keyup="rechercher">
     <div class="row">
       <div v-for="item in collection">
         <div class="col s12 m3">
@@ -42,7 +42,7 @@ data () {
 methods: {
 	 rechercher(){
      this.$http.get(`http://localhost:3000/search/${this.search}`).then((res) => {
-      this.posts = res.body;
+      this.collection = res.body;
      });
    }
 }// closes methods
