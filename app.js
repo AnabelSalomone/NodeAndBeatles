@@ -16,6 +16,18 @@ app.get('/', function (req, res) {
 	res.json(datas);
 })
 
+app.get('/search/:mot?', function (req, res) {
+	let mot = req.params.mot;//req.params => permet derecuperer les parametres en URL
+	console.log(mot);
+
+	let tab = [];
+	let reg = new RegExp(mot, "i");
+
+	tab = datas.filter((elt) => reg.test(elt.tracks));
+	res.json(tab);
+});
+
+
 app.listen(3000, function () {
 	console.log('Example app listening on port 3000!')
 })
