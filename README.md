@@ -2,9 +2,12 @@
 
 > Vue js, Node js, beatles, what else?
 
-## Build Setup
+# To run the json file:
+``` node app.js
 
-``` bash
+# Then, open another terminal and type 
+cd beatles
+
 # install dependencies
 npm install
 
