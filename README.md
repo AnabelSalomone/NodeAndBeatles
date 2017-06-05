@@ -2,8 +2,9 @@
 
 > Vue js, Node js, beatles, what else?
 
+```
 # To run the json file:
-``` node app.js
+node app.js
 
 # Then, open another terminal and type 
 cd beatles
