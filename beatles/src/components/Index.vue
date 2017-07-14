@@ -12,9 +12,8 @@
             </div>
   
             <div class="card-content">
-              <p v-for="item in item.tracks">
+              <p class="p-link" v-for="item in item.tracks" @click="routerLink(item)">
                 {{item}}
-  
               </p>
             </div>
   
@@ -42,7 +41,8 @@ export default {
   data() {
     return {
       collection: [],
-      search: ""
+      search: "",
+      song: ""
     }
   },
 
@@ -51,6 +51,12 @@ export default {
       axios.get(`http://localhost:3000/search/${this.search}`).then((res) => {
         this.collection = res.data;
       });
+    },
+
+    routerLink(el) {
+      this.song = el.split(" ").join("+");
+      console.log(this.song);
+      this.$router.push({ name: 'song', params: { song: this.song } });
     }
   }// closes methods
 }//closes export
@@ -59,5 +65,13 @@ export default {
 <style scoped>
 .card-content {
   min-height: 450px;
+}
+
+.p-link {
+  cursor: pointer;
+}
+
+.p-link:hover {
+  font-weight: bold;
 }
 </style>

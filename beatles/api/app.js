@@ -46,6 +46,11 @@ app.get('/search/:mot?', function (req, res) {
   res.json(tab);
 });
 
+app.get('/song/:song', (req, res) => {
+  console.log(req.params.song);
+  let song = req.params.song;
+  res.json(song)
+})
 
 
 //requête pour filtrer par mot-clé 
