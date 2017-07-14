@@ -30,11 +30,24 @@ app.use(cors({
   origin: 'http://localhost:8080'
 }));
 
+/**
+ * Erreur 500 sortie en JSON
+ */
+app.use(function (error, request, response, next) {
+  response.status(error.status || 500);
+  response.json({
+    error: error.message
+  });
+});
+
+
+//DATA LOADING
 app.get('/', function (req, res) {
   res.json(datas);
 })
 
 
+//SEARCH A SONG
 app.get('/search/:mot?', function (req, res) {
   let mot = req.params.mot; //req.params => permet derecuperer les parametres en URL
   console.log(mot);
@@ -46,6 +59,8 @@ app.get('/search/:mot?', function (req, res) {
   res.json(tab);
 });
 
+
+//Route to song detail
 app.get('/song/:song', (req, res) => {
   console.log(req.params.song);
   let song = req.params.song;
@@ -53,13 +68,13 @@ app.get('/song/:song', (req, res) => {
 })
 
 
-//requête pour filtrer par mot-clé 
+//GET A SONG
 app.get('/video/:keyword', (req, res) => {
   console.log("llamando search");
   let keyword = 'Beatles ' + req.params.keyword
   console.log("Keyword: ", keyword);
 
-  youTube.search(keyword, 10, function (error, result) {
+  youTube.search(keyword, 1, function (error, result) {
     if (error) {
       console.log('ERROR IN SEARCH LINE 58: ', error);
     } else {

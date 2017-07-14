@@ -1,9 +1,14 @@
 <template>
 	<div v-if="load">
-		<h1>
-			TEST WORKING</h1>
+		<h3 class="center-align"> {{song|spaces}}</h3>
+		<div class="row">
+			<div class="container">
+				<div class="video-container">
+					<iframe width="853" height="480" :src=video frameborder="0"></iframe>
+				</div>
+			</div>
+		</div>
 	
-		{{song|spaces}}
 	</div>
 </template>
 
@@ -16,7 +21,8 @@ export default {
 	data() {
 		return {
 			song: '',
-			load: false
+			load: false,
+			video: ''
 		}
 	},
 
@@ -25,9 +31,15 @@ export default {
 			console.log(res.data);
 			this.song = res.data;
 			window.scrollTo(0, 0);
-			console.log("song: " + this.song)
-			this.load = true;
+			console.log("song: " + this.song);
 		});
+
+		axios.get(`http://localhost:3000/video/${this.$route.params.song}`).then((res) => {
+			this.video = `//www.youtube.com/embed/${res.data.items[0].id.videoId}`
+			console.log(res.data.items[0].id.videoId);
+			console.log("done")
+			this.load = true;
+		})
 	},
 
 	filters: {
@@ -37,3 +49,7 @@ export default {
 	}
 }
 </script>
+
+<style scoped>
+
+</style>
