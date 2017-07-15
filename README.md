@@ -1,10 +1,11 @@
 # beatles
 
-> Vue js, Node js, beatles, what else?
+> Vue js, Express, YouTube API, Beatles, what else?
 
 ```
-# To run the json file:
-node app.js
+# To run the server file:
+cd beatles/api
+nodemon app.js
 
 # Then, open another terminal and type 
 cd beatles
