@@ -74,7 +74,7 @@ app.get('/video/:keyword', (req, res) => {
   let keyword = 'Beatles ' + req.params.keyword
   console.log("Keyword: ", keyword);
 
-  youTube.search(keyword, 1, function (error, result) {
+  youTube.search(keyword, 10, function (error, result) {
     if (error) {
       console.log('ERROR IN SEARCH LINE 58: ', error);
     } else {
