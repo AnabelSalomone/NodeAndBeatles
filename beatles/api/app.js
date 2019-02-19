@@ -17,7 +17,7 @@ app.use(logger('dev'));
 let bodyParser = require('body-parser');
 let YouTube = require('youtube-node');
 let youTube = new YouTube();
-youTube.setKey('AIzaSyB1OOSpTREs85WUMvIgJvLTZKye4BVsoFU');
+youTube.setKey(/*your key*/);
 
 
 //securisation de données en GET et POST
