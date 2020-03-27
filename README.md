@@ -4,32 +4,16 @@
 
 ```
 # To run the server file:
-cd beatles/api
-nodemon app.js
+cd api
+node app.js
 
-# Then, open another terminal and type 
-cd beatles
-
-# install dependencies
+# Then, open another terminal and install dependencies
 npm install
 
 # serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
+Site is not super responsive but I wasn't looking for a perfect responsive site, sorry not sorry :)
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
