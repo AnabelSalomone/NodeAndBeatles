@@ -3,7 +3,7 @@
     <h2>Beatles database</h2>
     <input class="input" type="text" placeholder="Find a song" v-model="search" @keyup="rechercher">
     <div class="row">
-      <div v-for="item in collection">
+      <div v-for="item in collection" :key=item.index>
         <div class="col s12 m3">
           <div class="card">
             <div class="card-image">
@@ -12,7 +12,7 @@
             </div>
   
             <div class="card-content">
-              <p class="p-link" v-for="item in item.tracks" @click="routerLink(item)">
+              <p class="p-link" v-for="item in item.tracks" :key=item.index @click="routerLink(item)">
                 {{item}}
               </p>
             </div>
@@ -31,10 +31,8 @@ import axios from 'axios';
 export default {
   name: 'index',
   created() {
-    console.log("Je suis la");
     axios.get('http://localhost:3000').then((res) => {
       this.collection = res.data;
-      console.log(this.collection)
     });
   },
 
