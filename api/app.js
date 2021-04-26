@@ -1,12 +1,11 @@
 let express = require('express')
 let datas = require('./datas.json')
 let cors = require('cors')
-let logger = require('morgan'); // permet d'utiliser des logs pour tracer dans la console
-
+let logger = require('morgan');
 let app = express()
 let corsOptions = {
   origin: 'http://localhost:8080',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+  optionsSuccessStatus: 200 
 }
 
 app.use(cors(corsOptions));
@@ -17,7 +16,7 @@ app.use(logger('dev'));
 let bodyParser = require('body-parser');
 let YouTube = require('youtube-node');
 let youTube = new YouTube();
-youTube.setKey(/*your key*/);
+youTube.setKey(/*your key*/); // PLEASE SET YOUR YOUTUBE KEY
 
 
 //securisation de données en GET et POST
@@ -30,9 +29,7 @@ app.use(cors({
   origin: 'http://localhost:8080'
 }));
 
-/**
- * Erreur 500 sortie en JSON
- */
+
 app.use(function (error, request, response, next) {
   response.status(error.status || 500);
   response.json({
@@ -49,8 +46,7 @@ app.get('/', function (req, res) {
 
 //SEARCH A SONG
 app.get('/search/:mot?', function (req, res) {
-  let mot = req.params.mot; //req.params => permet derecuperer les parametres en URL
-  console.log(mot);
+  let mot = req.params.mot;
 
   let tab = [];
   let reg = new RegExp(mot, "i");
@@ -62,7 +58,6 @@ app.get('/search/:mot?', function (req, res) {
 
 //Route to song detail
 app.get('/song/:song', (req, res) => {
-  console.log(req.params.song);
   let song = req.params.song;
   res.json(song)
 })
@@ -70,9 +65,7 @@ app.get('/song/:song', (req, res) => {
 
 //GET A SONG
 app.get('/video/:keyword', (req, res) => {
-  console.log("llamando search");
   let keyword = 'Beatles ' + req.params.keyword
-  console.log("Keyword: ", keyword);
 
   youTube.search(keyword, 10, function (error, result) {
     if (error) {
